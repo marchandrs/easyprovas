@@ -1,0 +1,10 @@
+<div>
+  <%= @post.text %>
+</div>
+
+<% @attachments.each do |a| %>
+  <%= image_tag a.data.url :thumb %>
+  <%= image_tag a.data %>
+<% end %>
+
+<div id="tags"></div>

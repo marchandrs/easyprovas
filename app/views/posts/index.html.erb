@@ -1,0 +1,15 @@
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post do %>
+        <%= post.short_text %>
+
+        <% post.attachments.all.each do |attachment| %>
+          <%= image_tag attachment.data.url :thumb %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate @posts %>
