@@ -1,17 +1,29 @@
 <%= form_for(@post, :html => { :multipart => true }) do |f| %>
-   <div class="field">
-     <%= f.label 'Description' %><br>
-     <%= f.text_area :text %>
-   </div>
+  <div class="field">
+    <%= f.label 'Descrição' %><br>
+    <%= f.text_area :text, value: @post.text %>
+  </div>
 
-   <%= f.fields_for :attachments do |a| %>
-     <div class="field">
-       <%= a.label 'Attachments' %><br>
-       <%= a.file_field :data, :multiple => true, name: "attachments[data][]" %>
-     </div>
-   <% end %>
+  <div class="field">
+    <%= f.label 'Tags (separar com #)' %><br>
+    <%= f.text_field :tag_list, value: @tags %>
+  </div>
 
-   <div class="actions">
-     <%= f.submit 'Save' %>
-   </div>
+  <%= f.fields_for :attachments, @new_attachments do |a| %>
+    <div class="field">
+      <%= a.label 'Adicionar anexos' %><br>
+      <%= a.file_field :data, :multiple => true, name: "attachments[data][]" %>
+    </div>
+  <% end %>
+
+  <% if @attachments.present? %>
+    <%= f.label 'Anexos' %>
+    <% @attachments.each do |a| %>
+      <%= image_tag a.data.url :thumb %>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit 'Salvar' %>
+  </div>
 <% end %>

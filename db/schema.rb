@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803053609) do
+ActiveRecord::Schema.define(version: 20160807220817) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "file_size"
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20160803053609) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
-    t.boolean  "visible"
+    t.integer  "status",     default: 0
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -74,11 +74,10 @@ ActiveRecord::Schema.define(version: 20160803053609) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.boolean  "active"
-    t.boolean  "moderator"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "max_file_size"
+    t.integer  "type",             default: 0
   end
 
 end
