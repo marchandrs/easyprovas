@@ -9,7 +9,15 @@
   <body>
     <h1>Provas</h1>
 
-    <%= link_to 'Entrar' %>
+    <% if current_user %>
+      <span>Olá,
+        <%= link_to current_user.name, user_path(current_user) %>,
+        <%= link_to 'Sair', signout_path, id: 'sign_out' %>
+      </span>
+    <% else %>
+      <%= link_to 'Entrar (com Facebook)', '/auth/facebook', id: 'sign_in' %>
+    <% end %>
+
     <%= link_to 'Provas' %>
     <%= link_to 'Contato' %>
 

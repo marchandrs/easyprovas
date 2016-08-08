@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-  	@posts = Post.where(:visible => true).paginate(:page => params[:page], :per_page => 10)
+  	@posts = Post.where(status: :active).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
         #@attachment = @post.attachments.create!(:data => d)
         @post.attachments.create!(:data => d)
       end
-      
+
       redirect_to @post, notice: 'Post criado com sucesso'
     else
 	    render action: 'new'
