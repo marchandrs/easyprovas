@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  #get 'welcome/index'
   root "welcome#index"
+
+  get 'login', to: 'login#index', as: 'login'
+
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
   resources :users, only: [:show]
-  
+
   resources :posts do
     resources :attachments, only: [:create, :destroy]
     resources :comments
@@ -15,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'tags/most_used' => 'tags#most_used'
   resources :tags, only: [:index, :show]
+
+  get 'contact', to: 'contact#index', as: 'contact'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

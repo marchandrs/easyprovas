@@ -1,0 +1,10 @@
+<strong><%= @user.name %></strong>
+<br>
+<%= image_tag @user.picture  %>
+<br>
+<% if current_user.id == @user.id %>
+  <span>Email: <%= @user.email %></span>
+  <br>
+<% end %>
+<span>Cadastrado em: <%= @user.created_at.strftime('%d/%m/%Y') %></span>
+<br>

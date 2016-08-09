@@ -11,15 +11,17 @@
 
     <% if current_user %>
       <span>Olá,
-        <%= link_to current_user.name, user_path(current_user) %>,
+        <%= link_to current_user.first_name, user_path(current_user) %>,
         <%= link_to 'Sair', signout_path, id: 'sign_out' %>
       </span>
     <% else %>
-      <%= link_to 'Entrar (com Facebook)', '/auth/facebook', id: 'sign_in' %>
+      <%= link_to 'Entrar', login_path %>
     <% end %>
 
-    <%= link_to 'Provas' %>
-    <%= link_to 'Contato' %>
+    <%= link_to 'Provas', posts_path %>
+    <%= link_to 'Contato', contact_path %>
+
+    <br>
 
     <%= yield %>
 
