@@ -2,12 +2,12 @@ class User < ActiveRecord::Base
 	has_many :posts
 	has_many :comments
   after_initialize :set_default_values
-	enum user_type: [:active, :inactive, :moderator, :admin]
+	enum user_type: [:regular, :inactive, :moderator, :admin, :anonymous]
 
 	def set_default_values
 		#self.active = true if self.active.nil?
 		self.max_file_size = 2 if self.max_file_size.nil?
-		self.user_type = :active if self.user_type.nil?
+		self.user_type = :regular if self.user_type.nil?
 	end
 
 	def self.from_omniauth(auth)
@@ -26,4 +26,12 @@ class User < ActiveRecord::Base
   	  user.save!
   	end
   end
+
+	def self.getAnonymousUser
+		user = User.new
+		user.id = nil
+		user.name = 'Anônimo'
+		user.user_type = :anonymous
+		user
+	end
 end

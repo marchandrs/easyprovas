@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def user_comments
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])      
     @comments = @user.comments
   end
 

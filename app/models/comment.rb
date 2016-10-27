@@ -3,7 +3,11 @@ class Comment < ActiveRecord::Base
   belongs_to :post
 
   def getUserName
-    @user ||= User.find(self.user_id)
+    if self.user_id.nil?
+      @user = User.getAnonymousUser
+    else
+      @user = User.find(self.user_id)
+    end
     @user.name
   end
 end
