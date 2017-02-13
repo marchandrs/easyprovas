@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  skip_before_action :require_login, only: [:index]
+
   def index
   	@posts = Post.where(status: :active).paginate(:page => params[:page], :per_page => 10)
   end

@@ -1,24 +1,41 @@
-<div>
-  <h4>Descrição</h4>
-  <%= @post.text %>
-</div>
+<section class="container">
+  <div class="card-big">
+    <div class="row">
+      <div class="col-xs-12 col-sm-9">
+        <div class="info">
+          <h2><%= @post.text[0..30] %></h2>
+          <p>de: <%= link_to @post.user.inspect, user_path, class: "link" %></p>
+          <p>
+            tags:
+            <% @post.tags.each do |tag| %>
+              <%= link_to "#" << tag.name, tag_path(tag), class: "link" %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="align-btn">
+          <button type="button" class="btn btn-download">Baixar</button>
+        </div>
+      </div>
+    </div>
 
-<h4>Anexos</h4>
-<% @attachments.each do |a| %>
-  <%= image_tag a.data.url :thumb %>
-  <% image_tag a.data %>
-<% end %>
+    <div class="description">
+      <p><%= @post.text %></p>
+    </div>
 
-<div id="tags">
-  <h4>Tags</h4>
-  <%= render @post.tags %>
-</div>
+    <% @attachments.each do |a| %>
+      <% image_tag a.data.url :thumb %>
+      <%= image_tag a.data, class: "image-preview" %>
+    <% end %>
 
-<div id="comments">
-  <h4>Comentários</h4>
-  <%= render @post.comments %>
-</div>
+    <div id="comments" class="info">
+      <h3>Comentários</h3>
+      <%= render @post.comments %>
+    </div>
 
-<div id="new_comment">
-  <%= render 'comments/form' %>
-</div>
+    <div id="new_comment" class="info">
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+</section>
