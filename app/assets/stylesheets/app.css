@@ -19,6 +19,10 @@ body {
     width: 12.7%;
   }
 
+  .col-sm-2ex {
+    width: 25.4%;
+  }
+
   .col-sm-3ex {
     width: 32%;
   }
@@ -241,4 +245,14 @@ footer {
 .btn-green {
   width: 100%;
   border-radius: 100px;
+}
+
+.contato-descricao {
+  height: 200px !important;
+}
+
+
+/* user */
+.user-picture {
+  margin-bottom: 20px;
 }

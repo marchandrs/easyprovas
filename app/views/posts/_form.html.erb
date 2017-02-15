@@ -1,7 +1,7 @@
 <%= form_for(@post, :html => { :multipart => true }) do |f| %>
   <div class="form-group field">
     <%= f.label 'Descrição' %><br>
-    <%= f.text_area :text, value: @post.text, class: "form-control" %>
+    <%= f.text_area :text, value: @post.text, class: "form-control contato-descricao" %>
   </div>
 
   <div class="form-group field">

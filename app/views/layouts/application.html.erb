@@ -38,24 +38,21 @@
               <%= link_to 'Sair', signout_path, id: 'sign_out', class: "link" %>
             </div>
           <% else %>
-            <div class="col-xs-12 col-sm-1ex center">
-              <%= link_to 'Contato', contact_path, class: "link" %>
-            </div>
-            <div class="col-xs-12 col-sm-1ex center">
-              <%= link_to 'Entrar', login_path, class: "link" %>
+            <div class="col-xs-12 col-sm-2ex center">
+              <%= link_to 'Entrar / Registrar', login_path, class: "link" %>
             </div>
           <% end %>
         </div>
       </section>
     </nav>
-    
+
     <%= yield %>
 
     <footer class="container">
       <div class="menu2">
-        <a href="">SOBRE</a>
-        <a href="">CONTATO</a>
-        <a href="">TERMOS</a>
+        <%= link_to "SOBRE", about_path %>
+        <%= link_to "CONTATO", contact_path %>
+        <%= link_to "TERMOS", termos_path %>
       </div>
     </footer>
 

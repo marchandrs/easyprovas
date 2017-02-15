@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'about/index'
+
+  get 'termos/index'
+
   #get 'welcome/index'
   root "welcome#index"
 
@@ -20,6 +24,8 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
 
   get 'contact', to: 'contact#index', as: 'contact'
+  get 'termos', to: 'termos#index', as: 'termos'
+  get 'about', to: 'about#index', as: 'about'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
